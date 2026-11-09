@@ -1,0 +1,298 @@
+/* Cargar después de index.css. */
+:root,
+.dashboard-shell,
+.auth-side {
+  --mist: #faf5eb;
+  --surface: #fffdf7;
+  --ink: #303b35;
+  --muted: #596359;
+  --line: #d8d4c7;
+  --border: #d8d4c7;
+  --violet: #425f50;
+  --violet-deep: #304839;
+  --on-violet: #fffdf7;
+  --ember: #655185;
+  --err: #943d37;
+  --ok: #365e44;
+
+  --cream: #faf5eb;
+  --mint: #dceadf;
+  --lavender: #e8e0f0;
+  --peach: #f4e0d4;
+  --blue: #dfeaf0;
+
+  --font-display: "Figtree Variable", system-ui, sans-serif;
+
+  color: var(--ink);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body,
+.site,
+.auth,
+.dashboard-shell {
+  background: var(--cream);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid #655185;
+  outline-offset: 4px;
+}
+
+::selection {
+  background: #e8e0f0;
+  color: #303b35;
+}
+
+/* Evita desplazamientos decorativos al pasar el cursor. */
+.btn,
+.principle-card,
+.account-choice,
+.text-link span {
+  transition: none;
+}
+
+.btn:hover,
+.principle-card:hover,
+.text-link:hover span {
+  transform: none;
+}
+
+/* Superficies suaves. */
+.card,
+.trust-strip,
+.principle-card,
+.topnav.is-open,
+.dashboard-sidebar,
+.profile-fieldset,
+.profile-next-step,
+.dashboard-shell .profile-next-step,
+.dashboard-logout,
+.quiet-toggle,
+.account-choice,
+.btn-ghost,
+.btn-light {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+.auth-side,
+.how-section {
+  background: var(--lavender);
+}
+
+.eyebrow,
+.principle-icon,
+.trust-icon,
+.account-choice:hover,
+.account-choice.is-selected {
+  background: var(--lavender);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.hero-art,
+.closing-cta,
+.dashboard-welcome {
+  background: var(--mint);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.closing-cta::before,
+.closing-cta::after,
+.hero-art::before,
+.card-decoration,
+.eyebrow-dot {
+  display: none;
+}
+
+.closing-cta p,
+.closing-cta .section-kicker,
+.closing-cta h2 em,
+.closing-spark,
+.topnav > a:not(.btn),
+.trust-strip > div,
+.landscape-caption,
+.welcome-note {
+  color: var(--violet-deep);
+}
+
+/* Botones pastel con texto oscuro. */
+.btn-primary,
+.auth-main button:not(.toggle),
+.dashboard-shell button[type="submit"],
+.dashboard-shell .relationship-actions button,
+.dashboard-shell .relationship-panel > button {
+  background: var(--mint);
+  color: var(--ink);
+  border: 1px solid #86998b;
+  box-shadow: none;
+}
+
+.btn-primary:hover,
+.auth-main button:not(.toggle):hover,
+.dashboard-shell button[type="submit"]:hover {
+  background: #cbded0;
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.auth-main button.link,
+.dashboard-shell .link {
+  background: var(--surface);
+  color: var(--violet);
+}
+
+.btn-ghost:hover,
+.btn-light:hover {
+  background: var(--lavender);
+}
+
+.sidebar-note,
+.profile-status,
+.dashboard-shell .empty-state,
+.dashboard-shell .profile-form:not(.profile-editor) {
+  background: #f2eddf;
+}
+
+.dashboard-sidebar nav button[aria-current] {
+  background: var(--mint);
+  border-color: #86998b;
+  color: var(--ink);
+  font-weight: 750;
+}
+
+/* Tarjetas de resumen. */
+.dashboard-shell .dashboard-stats article:nth-child(3n + 1) {
+  background: var(--mint);
+}
+
+.dashboard-shell .dashboard-stats article:nth-child(3n + 2) {
+  background: var(--lavender);
+}
+
+.dashboard-shell .dashboard-stats article:nth-child(3n + 3) {
+  background: var(--peach);
+}
+
+/* Formularios. */
+input,
+textarea,
+select,
+.profile-form textarea,
+.profile-fieldset select,
+.dashboard-shell .field input:not([type="range"]),
+.dashboard-shell .field select,
+.dashboard-shell .field textarea {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: #86998b;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.error {
+  color: var(--err);
+}
+
+.ok {
+  color: var(--ok);
+}
+
+/* Texto y apoyo visual comparten el espacio en escritorio. */
+.hero h1 {
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 1.18;
+}
+
+.hero h1 em,
+.closing-cta h2 em {
+  font-style: normal;
+}
+
+.hero,
+.dashboard-welcome {
+  grid-template-columns: 1fr 1fr;
+}
+
+.visual-symbol {
+  display: inline-grid;
+  place-items: center;
+  font-size: 1.5rem;
+}
+
+.dashboard-sidebar nav button .visual-symbol {
+  font-size: 1.6rem;
+  opacity: 1;
+}
+
+.dashboard-topline .view-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.without-symbols .visual-symbol {
+  display: none !important;
+}
+
+.is-quiet .dashboard-welcome {
+  background: var(--surface);
+}
+
+@media (max-width: 1050px) {
+  .dashboard-welcome {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .dashboard-sidebar nav button {
+    flex-direction: column;
+    gap: .35rem;
+  }
+
+  .dashboard-sidebar nav button .visual-symbol {
+    display: inline-grid;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

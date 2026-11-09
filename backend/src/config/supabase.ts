@@ -1,11 +1,36 @@
 import { createClient } from "@supabase/supabase-js";
 import { env } from "./env";
 
-const opts = { auth: { autoRefreshToken: false, persistSession: false } } as const;
+const guardedFetch: typeof fetch = (input, init) =>
+  fetch(input, {
+    ...init,
+    signal: AbortSignal.any([
+      ...(init?.signal ? [init.signal] : []),
+      AbortSignal.timeout(10_000),
+    ]),
+  });
 
-/** Cliente con service_role: solo backend, solo para operaciones administrativas. */
-export const supabaseAdmin = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, opts);
+const opts = {
+  auth: {
+    autoRefreshToken: false,
+    persistSession: false,
+  },
+  global: {
+    fetch: guardedFetch,
+  },
+} as const;
 
-/** Cliente efímero con clave publicable, para validar credenciales de login. */
+// Solo se utiliza dentro del backend.
+export const supabaseAdmin = createClient(
+  env.SUPABASE_URL,
+  env.SUPABASE_SERVICE_ROLE_KEY,
+  opts,
+);
+
+// Cliente independiente para validar credenciales.
 export const createPublicClient = () =>
-  createClient(env.SUPABASE_URL, env.SUPABASE_PUBLISHABLE_KEY, opts);
+  createClient(
+    env.SUPABASE_URL,
+    env.SUPABASE_PUBLISHABLE_KEY,
+    opts,
+  );
